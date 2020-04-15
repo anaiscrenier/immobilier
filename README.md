@@ -33,3 +33,26 @@ git commit -m "..." ( ont mes ce qu'ont veux)
 
 git push origin master
 ...
+
+## APACHE-PACK
+
+- barre de  débug : 
+...
+MAC=> php ~/composer.phar require symfony/apache-pack
+WIN => composer require symfony/apache-pack
+...
+
+## CONTROLEUR
+
+- créer un controleur :
+...
+
+php bin/console make:controller
+...
+
+## BASE DE DONNEES
+
+- ligne 32 dans .env (y modifier avec les informations de connexion phpMyadmin):
+...
+
+DATA
