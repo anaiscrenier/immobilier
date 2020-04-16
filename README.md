@@ -2,6 +2,11 @@
 
 ## COMPOSER
 
+- aller sur getcomposer.org, lien "download" sur la page d'accueil
+- Windows : télécharger l'exécutable et le lancer
+- Mac : ouvrir un terminal et suivre les instructions
+- à ne pas réinstaller pour chaque nouveau projet Symfony
+
 ## GIT
 
 - créer un dépot distant sur GitHub
@@ -55,4 +60,12 @@ php bin/console make:controller
 - ligne 32 dans .env (y modifier avec les informations de connexion phpMyadmin):
 ...
 
-DATA
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/idb_name?serverVersion=5.7
+( pour moi ca sera cela : DATABASE_URL=mysql://root:root@127.0.0.1:8889/immobilier?serverVersion=5.7)
+
+- créer la base :
+...
+
+php bin/console doctrine:database:create
+...
+

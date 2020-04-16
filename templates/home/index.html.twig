@@ -8,12 +8,75 @@
 
 {% block body %}
 
+
 <header>
     <p class="bg-dark">Immobilier</p>
 </header>
 
 <div class="content">
-    <p>Le contenu du site ici...</p>
-</div>
+
+    <div class="row p-5">
+
+    {% for maison in maisons %}
+
+    <div class="col-md-6 col-lg-4 p-3">
+    <div class="card">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ maison.titre }}</h5>
+          <p class="card-text">{{ maison.descriptif }}</p>
+          <p class="card-text">{{ maison.localisation }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Surface : {{ maison.surface }} m2</li>
+          <li class="list-group-item">Pi&egrave;ces : {{ maison.pieces }}</li>
+          <li class="list-group-item">chambres : {{ maison.chambres }}</li>
+          <li class="list-group-item">Les plus : 
+{#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ voir commentaire 1 en bas @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}
+            <ul>
+                   
+            {% if maison.jardin == true %}
+            <li>
+                jardin
+            </li>
+            {% endif %}
+            {% if maison.garage == true %}
+            <li>
+                garage
+            </li>
+            {% endif %}
+            </ul>
+
+                   {# ou 
+
+           {#  
+            {% if maison.jardin == true %}
+            jardin 
+            {% endif %}
+
+              {% if maison.garage == true %}
+               {% if maison.jardin == true %}
+
+                  , garage
+                  {% else %}
+              {% endif %}
+              {% endif %}
+              #}
+
+          </li>
+        </ul>
+        <div class="card-body text-center">
+          <a href="#" class="card-link btn btn-primary">voir le d&eacute;tail</a> <!-- &eacute ca fait reference au é-->
+        </div>
+      </div>
+    </div>
+
+     {% endfor %}
+
+     </div>
+    </div>
 
 {% endblock %}
+
+
+{# 1: pour voir le jardin et le garage marquer dans les plus il faut mettre 1 ou autres dans phpMyAdmin et le modifier car ot la pas automatise au debut#}

@@ -1,15 +1,15 @@
 *{
-    background:rgba(250, 143, 179, 0.818);
+    background:rgb(255, 255, 255);
 }
 
 header{
-    color:plum;
+    color:rgb(255, 255, 255);
 }
 
 .content{
-    color: rgb(85, 118, 218);
+    color:rgb(0, 0, 0); 
 }
 
 footer{
- color: rgb(81, 198, 206);
+ color: rgb(0, 0, 0); 
 }

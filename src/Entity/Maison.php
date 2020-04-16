@@ -46,6 +46,16 @@ class Maison
      */
     private $localisation;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @ORM\Column(type="string", length=999, nullable=true)
+     */
+    private $descriptif;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +129,30 @@ class Maison
     public function setLocalisation(string $localisation): self
     {
         $this->localisation = $localisation;
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getDescriptif(): ?string
+    {
+        return $this->descriptif;
+    }
+
+    public function setDescriptif(?string $descriptif): self
+    {
+        $this->descriptif = $descriptif;
 
         return $this;
     }
