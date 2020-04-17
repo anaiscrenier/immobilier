@@ -69,3 +69,33 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/idb_name?serverVersion=5
 php bin/console doctrine:database:create
 ...
 
+- créer une entité (table) :
+```
+php bin/console make:entity
+```
+- migration :
+```
+php bin/console make:migration
+```
+```
+php bin/console doctrine:migrations:migrate
+```
+​
+## FIXTURES
+​
+- installer le bundle :
+```
+composer require --dev orm-fixtures
+```
+- remplir le fichier AppFixtures.php avec les données
+- persist()
+- flush()
+- envoyer en bdd en écrasant :
+```
+php bin/console doctrine:fixtures:load
+```
+```
+php bin/console doctrine:fixtures:load --append
+```
+- après avoir chargé les données, penser à renommer le fichier AppFixtures.php en ajoutant ~ ou _ devant
+
