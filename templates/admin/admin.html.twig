@@ -1,0 +1,42 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock stylesheets %}
+
+{% block body %}
+
+<div class="container-fluid p-0">
+
+    <header class="bg-dark p-5">
+        <h1 class="text-center text-white">Accueil administrateur</h1>
+    </header>
+
+    <div class="content">
+
+        <div class="row">
+            {{ parent() }}
+
+            {#<div class="col-2 bg-secondary text-white" id="aside">
+                <ul>
+                    <li>lien</li>
+                    <li>lien</li>
+                    <li>lien</li>
+                    <li>lien</li>
+                    <li>lien</li>
+                </ul>
+            </div>
+          #}
+            <div class="col-10">
+                <p>Les formulaires seront ici...</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}
