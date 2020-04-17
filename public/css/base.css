@@ -1,0 +1,15 @@
+/*************************************SETTINGS***************************************/
+
+*{
+    padding:0;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif; 
+    font-weight:lighter; 
+    list-style-type: none;
+}
+
+/* TITLES*****/
+
+h1{
+    font-size: 2em;
+}

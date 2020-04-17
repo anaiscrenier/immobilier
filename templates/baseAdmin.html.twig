@@ -11,18 +11,20 @@
             {% block title %}bienvenue{% endblock %}
         </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+
         {% block body %}
             <div class="col-2 bg-secondary text-white" id="aside">
                 <ul>
-                    <li>lien</li>
-                    <li>lien</li>
-                    <li>lien</li>
-                    <li>lien</li>
-                    <li>lien</li>
+                    <li class="p-2">lien</li>
+                    <li class="p-2">lien</li>
+                    <li class="p-2">lien</li>
+                    <li class="p-2">lien</li>
+                    <li class="p-2">lien</li>
+                    <li class="p-2"><a href="{{ path('app_logout')}}" class="btn btn-sm btn-outline-light">D&eacute;connexion</a></li>
                 </ul>
             </div>
         {% endblock %}
