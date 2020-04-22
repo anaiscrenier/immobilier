@@ -1,0 +1,57 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Maisons!{% endblock %}
+
+{% block body %}
+<div class="container-fluid p-0">
+
+    <header class="bg-dark p-5">
+        <h1 class="text-center text-white">Espace administrateur - maisons</h1>
+    </header>
+
+    <div class="content">
+
+        <div class="row">
+
+            {{ parent() }}
+
+            <div class="col-10 p-3">
+               
+                <table class="table table-bordered table-hover table-sm text-center">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">N°</th>
+                            <th scope="col">Localisation</th>
+                            <th scope="col"> Prix</th>
+                            <th scope="col"> Pi&eacute;ces</th>
+                            <th scope="col"> Surface</th>
+                            <th scope="col"> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for maison in maisons %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ maison.localisation }}</td>
+                            <td>{{ maison.prix }}</td>
+                            <td>{{maison.pieces }}</td>
+                            <td>{{maison.surface }}</td>
+                            <td>
+                                <a href="{{ path('admin_maison_update', {'id' :maison.id}) }}">Modifier</a>
+                                | 
+                                <a href="{{ path('admin_maison_delete', {'id' :maison.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

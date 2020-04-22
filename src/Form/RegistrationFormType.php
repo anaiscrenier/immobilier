@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Rollerworks\Component\PasswordStrength\Validator\Constraints\PasswordStrength;
 
 class RegistrationFormType extends AbstractType
 {
@@ -40,13 +41,26 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Merci de renseigner un mot de passe',
                     ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
+
+                    //code par defaut avec 6 caracteres de base, je le laisse en commentaire, 
+                    // pour voir comment un exemple par defaut. 
+                            //new Length([
+                           //'min' => 6,
+                          //'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
+                         // max length allowed by Symfony for security reasons
+                        // 'max' => 4096,
+                       // ]),
+
+                new passwordStrength([
+                    'minLength' => 8,     //longeur minimal
+                    'tooShortMessage' => 'le mot de passe doit contenir au moins 8 caractères',//Message si ont rempli pas 8 caracères. 
+                    'minStrength' => 4,  //Force de mot de passe
+                    'message' => 'le mot de passe doit contenir au moins une lettre minuscule,une lettre majuscule et un chiffre'
+
+              ])
+              ],
+            
+
                 'attr' => [
                     'placeholder' => 'Mot de passe'
                 ], 

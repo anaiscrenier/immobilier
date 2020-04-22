@@ -1,0 +1,31 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Maisons - create!{% endblock %}
+
+{% block body %}
+<div class="container-fluid p-0">
+
+    <header class="bg-dark p-5">
+        <h1 class="text-center text-white">Espace administrateur - maisons - create</h1>
+    </header>
+
+    <div class="content">
+
+        <div class="row">
+
+            {{ parent() }}
+
+            <div class="col-10 p-3">
+               
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+                
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}
