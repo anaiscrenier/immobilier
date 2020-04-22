@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Maison;
+use App\Entity\Appartement;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -26,9 +27,9 @@ class AppFixtures extends Fixture
         // autre methode, de faire une boucle  pour faire plusieurs maison pareil, pour la base de données, c'est pas super pour les maison mais c'est pour un exemple
 
 
-        for($i = 1 ; $i <= 5; $i++){
+       // /for($i = 1 ; $i <= 5; $i++){
 
-        $maison = new Maison(); 
+       /* $maison = new Maison(); 
         $maison->setSurface(70); 
         $maison->setPieces(5); 
         $maison->setJardin(true); 
@@ -37,11 +38,23 @@ class AppFixtures extends Fixture
         $maison->setLocalisation('ville'.$i); 
         $maison->setTitre('titreMaison '.$i); 
         $manager->persist($maison); 
+        $manager->flush();*/
         
-        $manager->flush();
+
+        for($i =1 ; $i <= 5; $i++){
+
+            $appartement = new Appartement(); 
+            $appartement->setSurface(70); 
+            $appartement->setPieces(6); 
+            $appartement->setBalcon(true); 
+            $appartement->setChambres(4); 
+            $appartement->setGarage(false); 
+            $appartement->setLocalisation('ville'.$i); 
+            $appartement->setTitre('titreAppartement'.$i); 
+            $manager->persist($appartement); 
+            $manager->flush(); 
+        }
+    }
     }
 
-    //$manager->flush();
-    }
-}
 //mettre un signe devant (AppFixtures.php pour pas que quand ont mettent php bin/console doctrine:fixtures:load --append) dans le terminal, il nous compte 2 fois la meme choses.
