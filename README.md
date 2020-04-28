@@ -159,5 +159,18 @@ php bin/console debug:router
 - obtenir des infos sur une route (si existe) :
 ```
 php bin/console router:match /le_nom_de_votre_route
-```
-​
+``` 
+
+## MAIL
+
+- installer SwiftMailer :
+'''
+
+php ~/composer.phar require symfony/swiftmailer-bundle
+'''
+-créer le formulaire de contact : 
+'''
+php bin/console make:form contact 
+'''
+- remplir le formulaire dans src/form/contactType.php
+- 
