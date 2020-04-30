@@ -13,3 +13,12 @@ header{
 footer{
  color: rgb(0, 0, 0); 
 }
+
+
+#content{
+    min-height: 100vh;
+}
+
+.card .list-group_item:last-child{
+    min-height: 97px;
+}

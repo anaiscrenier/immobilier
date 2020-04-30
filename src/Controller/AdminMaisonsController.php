@@ -10,6 +10,24 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+function convertImage($source, $dst, $width, $height, $quality){
+    $imageSize = getimagesize($source);
+    $sourceWidth = $imageSize[0];
+    $sourceHeight = $imageSize[1];
+    $ratio = $sourceWidth / $sourceHeight;
+    $imageRessource = imagecreatefromjpeg($source);
+    if($ratio > 1){
+        $newSourceWidth = $sourceWidth / $ratio;
+        $img = imagecrop($imageRessource, ['x' => 100, 'y' => 0, 'width' => $newSourceWidth, 'height' => $sourceHeight]);
+    }
+    else{
+        $img = $imageRessource;
+    }
+    $imageFinal = imagecreatetruecolor($width, $height);
+    $final = imagecopyresized($imageFinal, $img, 0, 0, 0, 0, $width, $height, $imageSize[0], $imageSize[1]);
+    imagejpeg($img, $dst, $quality);
+}
+
 class AdminMaisonsController extends AbstractController
 {
     /**
@@ -46,11 +64,13 @@ class AdminMaisonsController extends AbstractController
             $newImg1FileName = $img1FileName.'.'.$img1File->guessExtension(); 
 
             try {
-                $img1File->move(
-                    $this->getParameter('maison_img_directory'),
-                    $newImg1FileName
-                ); 
 
+                $path = $this->getParameter('maison_img_directory').'/'.$newImg1FileName;
+                convertImage($img1File, $path, 600, 600, 100);
+               /* $img1File->move(
+                    $this->getParameter('maison_img_directory'),
+                    $newImg1FileName ); */
+               
             } 
             catch(FileException $e){
                 $this->addFlash(
@@ -91,7 +111,7 @@ class AdminMaisonsController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-            if($oldImgName != null){
+            if($oldImg1Name != null){
                unlink($oldImg1Path); 
             }
         
@@ -101,10 +121,14 @@ class AdminMaisonsController extends AbstractController
             $newImg1FileName = $img1FileName.'.'.$img1File->guessExtension(); 
 
             try {
-                $img1File->move(
-                    $this->getParameter('maison_img_directory'),
+
+                $path = $this->getParameter('maison_img_directory').'/'.$newImg1FileName;
+                convertImage($img1File, $path, 100, 100, 100);
+
+                /*$img1File->move(
+                    $this->getParameter('maison_img_directory'),// c'est pour uploader l'image pour le mettre dans le dossier qu'ont veux. 
                     $newImg1FileName
-                ); 
+                ); */
 
             } 
             catch(FileException $e){

@@ -174,3 +174,6 @@ php bin/console make:form contact
 '''
 - remplir le formulaire dans src/form/contactType.php
 - 
+
+
+//composer require twig/string-extra: aller voir ce que ca fais sur internet et a quoi ca sert// 

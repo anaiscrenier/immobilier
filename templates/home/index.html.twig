@@ -14,6 +14,7 @@
 </header>
 
 <div class="content">
+   
 
     <div class="row p-5">
 
@@ -24,26 +25,23 @@
         <img class="card-img-top" src="./img/maison/{{ maison.img1 }}" alt="image maison">
         <div class="card-body">
           <h5 class="card-title">{{ maison.titre }}</h5>
-          <p class="card-text">{{ maison.descriptif }}</p>
+          <p class="card-text">{{ maison.descriptif|u.truncate(200, '...') }}</p>
           <p class="card-text">{{ maison.localisation }}</p>
         </div>
         <ul class="list-group list-group-flush">
+          <li class="list-group-item-secondary"> {% trans %} Prix {% endtrans %}: {{ maison.prix|number_format(0, ',', '')  }} €/</li>
           <li class="list-group-item">Surface : {{ maison.surface }} m2</li>
-          <li class="list-group-item">Pi&egrave;ces : {{ maison.pieces }}</li>
-          <li class="list-group-item">chambres : {{ maison.chambres }}</li>
-          <li class="list-group-item">Les plus : 
-{#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ voir commentaire 1 en bas @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}
+          <li class="list-group-item">{% trans %}Pi&egrave;ces {% endtrans %}: {{ maison.pieces }}</li>
+          <li class="list-group-item">{% trans %}chambres {% endtrans %}: {{ maison.chambres }}</li>
+          <li class="list-group-item">{% trans %}Les plus {% endtrans %}: 
+
             <ul>
                    
             {% if maison.jardin == true %}
-            <li>
-                jardin
-            </li>
+            <li>{% trans %}jardin{% endtrans %}</li>
             {% endif %}
             {% if maison.garage == true %}
-            <li>
-                garage
-            </li>
+            <li>garage</li>
             {% endif %}
             </ul>
 
@@ -66,12 +64,14 @@
           </li>
         </ul>
         <div class="card-body text-center">
-          <a href="#" class="card-link btn btn-primary">voir le d&eacute;tail</a> <!-- &eacute ca fait reference au é-->
+          <a href="#" class="card-link btn btn-primary">{% trans %}voir le d&eacute;tail{% endtrans %}</a> <!-- &eacute ca fait reference au é-->
         </div>
       </div>
     </div>
 
      {% endfor %}
+
+     
 
      </div>
     </div>
