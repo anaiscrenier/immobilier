@@ -6,6 +6,7 @@ use App\Entity\Maison;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -47,11 +48,26 @@ class MaisonType extends AbstractType
                     'non' => false
                 ]
             ])
-            ->add('img_1')
+            ->add('img_1', FileType::class, [
+                'required' => true, 
+                'mapped' => false,
+                'label' => 'Image 1',
+                'attr' => [
+                     'placeholder' => 'Image de présentation, pas trop grande svp'
+
+                ]
+            ])
+            ->add('alt_1', TextType::class, [
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'ex.: photo principal de la maison ccc'
+                ]
+                ])
+
             ->add('img_2')
             ->add('img_3')
  //['required' => false] : c'est pour enlever le champ obligatoire,(car j'ai mis false, si je veux que ca soir obligatoire il faut mettre true) et donc ca sera pas obligatooire de mettre quelque chose deand pour valider. //
-            ->add('alt_1', TextType::class, ['required' => false])
+            
             ->add('alt_2', TextType::class, ['required' => false])
             ->add('alt_3', TextType::class, ['required' => false])
             ->add('valider', SubmitType::class)

@@ -35,16 +35,15 @@ class MaisonRepository extends ServiceEntityRepository
         ;
     }
     */
-
     /*
-    public function findOneBySomeField($value): ?Maison
+    public function findByCreation()
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.affiche = :val')
+            ->setParameter('val', true)
+            ->orderBy('c.createdAt', 'DESC')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
-    }
-    */
+    }*/
 }
